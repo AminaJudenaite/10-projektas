@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="container">
+        <div id="left" class="left">
+            <div class="list" draggable="true">Elementas 1</div>
+            <div class="list" draggable="true">Elementas 2</div>
+            <div class="list" draggable="true">Elementas 3</div>
+            <div class="list" draggable="true">Elementas 4</div>
+        </div>
+        <div id="right" class="right"></div>
+    </div>
+
+    <script>
+        let lists = document.getElementsByClassName("list");
+        let rightBox = document.getElementById("right");
+        let leftBox = document.getElementById("left");
+
+        for(list of lists){
+            list.addEventListener("dragstart", function(e){
+                selected = e.target;
+            });
+        }
+
+        rightBox.addEventListener("dragover", function(e){
+            e.preventDefault();
+        });
+        rightBox.addEventListener("drop", function(e){
+            rightBox.appendChild(selected);
+            selected = null;
+        });
+
+  
+        leftBox.addEventListener("dragover", function(e){
+            e.preventDefault();
+        });
+        leftBox.addEventListener("drop", function(e){
+            leftBox.appendChild(selected);
+            selected = null;
+        });
+    </script>
+
+</body>
+</html>
